@@ -1,0 +1,17 @@
+on: workflow_dispatch
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Load secret
+        id: op-load-secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          export-env: false
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          SECRET: op://Test/MyCred/username
+
+      - name: Print masked secret
+        run: 'echo "Secret: ${{ steps.op-load-secret.outputs.SECRET }}"'
