@@ -1,4 +1,4 @@
-on: workflow_dispatch
+on: push
 
 jobs:
   hello-world:
@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Load secret
         id: op-load-secret
-        uses: 1password/installCLI@v1
+        uses: 1password/load-secrets-action@v1
         with:
           export-env: false
         env:
