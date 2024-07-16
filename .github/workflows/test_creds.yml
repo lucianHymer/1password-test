@@ -13,7 +13,6 @@ jobs:
           export-env: false
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          SECRET: op://Test/MyCreds/username
 
       - name: Print masked secret
-        run: 'echo "Secret: ${{ steps.op-load-secret.outputs.SECRET }}"'
+        run: 'echo "Secret: ${{ steps.op-load-secret.outputs.secrets }}"'
